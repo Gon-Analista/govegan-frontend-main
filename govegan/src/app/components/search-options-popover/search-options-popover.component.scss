@@ -1,0 +1,12 @@
+/* change hover background color*/
+
+ion-item {
+    --inner-border-width: 0;    
+  }
+
+.recetas--innerborder {
+    --inner-border-width: 0 0 1px 0;
+  }
+
+
+

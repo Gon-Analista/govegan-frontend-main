@@ -1,0 +1,32 @@
+.titulo{
+    margin-right: 14vw;
+    font-size: 4vw; 
+    font-weight: bold;
+    --color: #272727;
+}
+
+.nombreAlimento{
+    margin: 0;
+    font-weight: bold;
+    font-size: 4vw;
+    text-align: center;
+}
+
+.header--allign{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+  
+ion-item {
+    border-bottom: 1px solid #91C788;
+    padding-bottom: 5px;
+    border-radius: 2px;
+  }
+
+  .iconoCategoria {
+    margin-right: 15px;
+    width: 32px;
+    height: 32px;
+  }

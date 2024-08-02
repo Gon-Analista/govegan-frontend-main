@@ -1,0 +1,76 @@
+<ion-toolbar class="ion-text-center">
+  <ion-title class="titulo">Editar Perfil</ion-title>
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="" (click)="cerrarModal()"></ion-back-button>
+  </ion-buttons>
+</ion-toolbar>
+
+<ion-content>
+  <div class="contenido">
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Nombre</ion-label>
+        <ion-input [(ngModel)]="perfil.name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Edad</ion-label>
+        <ion-input type="number" [(ngModel)]="perfil.age"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Género</ion-label>
+        <ion-select [(ngModel)]="perfil.gender" class="ion-text-center">
+          <ion-select-option value="FEMENINO">Femenino</ion-select-option>
+          <ion-select-option value="MASCULINO">Masculino</ion-select-option>
+          <ion-select-option value="OTRO">Otro</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Peso (kg)</ion-label>
+        <ion-input type="number" [(ngModel)]="perfil.weight"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Altura (cm)</ion-label>
+        <ion-input type="number" [(ngModel)]="perfil.height"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Ciudad</ion-label>
+        <ion-input [(ngModel)]="perfil.city"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">País</ion-label>
+        <ion-input [(ngModel)]="perfil.country"></ion-input>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label class="label--fontsize">Alergias y Comidas no deseadas</ion-label>
+        <ion-button class="boton--color" fill="outline" slot="end" (click)="irAdministrarAlimentos()">Ver Alergias</ion-button>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label class="label--fontsize">Recetas y Comidas Favoritas</ion-label>
+        <ion-button class="boton--color" fill="outline" slot="end" (click)="irAFavoritos()">Ver Favoritos</ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Calorías por Día</ion-label>
+        <ion-input type="number" [(ngModel)]="perfil.caloriesPerDay"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Agua por Día (litros)</ion-label>
+        <ion-input type="number" [(ngModel)]="perfil.waterPerDay"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Titulo</ion-label>
+        <ion-select [(ngModel)]="perfil.title" class="ion-text-center">
+          <ion-select-option value="Sin titulo">Ninguno</ion-select-option>
+          <ion-select-option value="Vegano">Vegano</ion-select-option>
+          <ion-select-option value="Entusiasta de Plantas">Entusiasta de Plantas</ion-select-option>
+          <ion-select-option value="Guerrero Ecológico">Guerrero Ecológico</ion-select-option>
+          <ion-select-option value="Defensor de los Animales">Defensor de los Animales</ion-select-option>
+          <ion-select-option value="Comedor Sostenible">Comedor Sostenible</ion-select-option>
+          <ion-select-option value="Consciente de la Salud">Consciente de la Salud</ion-select-option>          
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <div>
+      <ion-button expand="block" class="boton__ingresar--color" (click)="guardarCambios()">Guardar Cambios</ion-button>
+    </div>
+  </div>
+</ion-content>

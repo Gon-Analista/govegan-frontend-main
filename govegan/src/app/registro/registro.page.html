@@ -1,0 +1,49 @@
+<link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Registro</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div>
+    <br>
+    <div class="ion-padding">
+      <div class="logo">
+        <ion-img src="assets/img/logo.png" ></ion-img>
+      </div>
+      <ion-input class="labels--bordes" label="Correo" label-placement="stacked" fill="outline"  placeholder="Ej: abc@ejemplo.com" [(ngModel)]="email">
+        <i class="icon ion-ios-mail" slot="start"></i>
+      </ion-input>
+      <br>
+      <ion-input class="labels--bordes" label="Nombre de usuario" label-placement="stacked" fill="outline"  placeholder="Ej: vegano123" [(ngModel)]="username">
+        <i class="icon ion-md-person" slot="start"></i>
+      </ion-input>
+      <br>
+      <ion-input class="labels--bordes" label="Contraseña" label-placement="stacked" type="password" fill="outline" aria-label="Show/hide"placeholder="************" [(ngModel)]="password">
+        <i class="icon ion-ios-lock" slot="start"></i>
+
+      </ion-input>
+      <br>
+      <ion-input class="labels--bordes" label="Repetir Contraseña" label-placement="stacked" type="password"  fill="outline" placeholder="************" [(ngModel)]="confirmPassword">
+        <i class="icon ion-ios-lock" slot="start"></i>
+      </ion-input>  
+      <br> 
+      <div>
+        <ion-button shape="round" expand="block" class="boton__color" (click)="register()">Registrarse</ion-button>
+      </div>
+      <br>
+      <ion-segment class="divider"></ion-segment>
+      <br>
+      <div class="ingresar">
+        <ion-label>¿Ya tienes cuenta?</ion-label>
+        <ion-button class="boton__ingresar" fill="clear" (click)="gotoLog()">Ingresar
+        </ion-button>
+      </div>
+
+
+      
+    </div>
+  </div>
+
+</ion-content>

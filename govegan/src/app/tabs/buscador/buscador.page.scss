@@ -1,0 +1,140 @@
+.titulo {
+  margin-right: 14vw;
+  font-size: 4vw; 
+  font-weight: 600;
+  color: #272727;
+}
+
+ion-toolbar {
+  z-index: initial;
+  margin-bottom: -10px;
+}
+.margin-bottom {
+  margin-bottom: 60px;
+}
+
+.boton--color {
+  --border-color: #91C788;
+  color: #272727;
+}
+
+.carta {
+  background-color: #EFF7EE;
+  border-radius: 2vw;
+  margin-bottom: 8vw; 
+  margin-left: 8vw; 
+  margin-right: 8vw;
+  box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  border: none; 
+  overflow: hidden; 
+}
+
+.sinResultados--centrar {
+  position: absolute;
+  top: 20%;
+  text-align: center;
+}
+
+.titulo__error {
+  font-size: 24px;
+  color: #696969;
+}
+
+.texto__error {
+  font-size: 18px;
+  color: #A9A9A9;
+}
+
+.error__icon {
+  width: 230px;
+  height: 230px;
+  padding-bottom: 5px;
+}
+
+.carta:active {
+  transform: scale(1.03); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  background-color: #d4fcd4;
+}
+
+.carta:hover {
+  transform: scale(1.03); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  background-color: #d4fcd4;
+}
+
+.tab-bar {
+  position: fixed;
+  bottom: 0; 
+  width: 100%;
+  height: 70px;
+}
+
+.iconoFavorito:hover {
+  transition: ease 0.4s;
+  transform: scale(1.1);
+}
+
+.iconoFavorito:active {
+  transition: ease 0.4s;
+  transform: scale(1.1);
+}
+
+.favorito-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: none; 
+  border: none; 
+  box-shadow: none; 
+}
+
+.paginador {
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  padding-bottom: 5px;
+}
+
+.paginador__texto {
+  margin: 0 20px;
+}
+
+
+.category-card {
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #f2f7f0f8;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.category-card.selected {
+  background-color: #d4fcd4;
+}
+
+.category-card:hover {
+  background-color: #d4fcd4;
+}
+
+
+.category--name {
+  font-size: 14px;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.swiper-category {
+  margin-bottom: 10px;
+  margin-left: 8px;
+}
+
+.spinner {  
+  height: 160px;
+  width: 349px;
+  color: #8bef77;
+}

@@ -1,0 +1,78 @@
+<ion-toolbar class="ion-text-center">
+  <ion-title class="titulo">Perfil</ion-title>
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="/"></ion-back-button>
+  </ion-buttons>
+</ion-toolbar>
+
+<ion-content class="ion-padding profile-content">
+  <div class="profile-header">
+    <div class="profile-img-container">
+      <img [src]="userProfile.profilePicture || 'https://picsum.photos/175/175?random='" alt="Img"/>
+    </div>
+    <button ion-button id="open-modal" class="edit-profile-btn" (click)="openImageOptions()" aria-label="Show/hide">
+      <ion-icon class="icono-camara" name="camera"></ion-icon>
+    </button>
+    <h2 class="profile-name">{{ userProfile.name }}</h2>
+    <p class="profile-status">{{ userProfile.title }}</p>
+  </div>
+
+  <ion-list class="profile-options">
+    <ion-item button (click)="abrirModal()">
+      <ion-icon slot="start" name="person" class="icon--colorNaranja"></ion-icon>
+      <ion-label class="texto--colorGris">Editar Perfil</ion-label>
+      <ion-icon slot="end" name="chevron-forward-outline" class="icon--colorGris"></ion-icon>
+    </ion-item>
+
+    <ion-item button (click)="logout()">
+      <ion-icon slot="start" name="log-out" class="icon--colorNaranja"></ion-icon>
+      <ion-label class="texto--colorGris">Desconectar</ion-label>
+      <ion-icon slot="end" name="chevron-forward-outline" class="icon--colorGris"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+  <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-title class="ion-text-center">Sube una foto</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <div class="modal-content">
+          <ion-button expand="block" class="file-select-button" (click)="fileInput.click()">
+            Seleccionar archivo
+          </ion-button>
+          <input id="photo" type="file" #fileInput class="file-input" (change)="onFileSelected($event)" accept="image/*" />
+          <div class="ion-text-center">
+            <p class="selected-file-name" *ngIf="fileName">Archivo: {{ fileName }}</p>
+          </div>
+      
+          <div *ngIf="previewUrl" class="preview-container">
+            <h2 class="preview-title">Vista previa</h2>
+            <div class="profile-img-container preview-img-container">
+              <div class="image-crop-wrapper" [style.transform]="'translate(' + imagePosition.x + 'px, ' + imagePosition.y + 'px)'">
+                <img [src]="previewUrl" alt="Vista previa" class="preview-img" (mousedown)="startDrag($event)" (touchstart)="startDrag($event)">
+              </div>
+            </div>
+            <p class="preview-instruction">Arrastra la imagen para ajustar</p>
+          </div>
+      
+          <ion-button expand="block" (click)="showAlertUpload();uploadFile()" [disabled]="!fileSelected" class="upload-button">
+            Subir
+          </ion-button>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>
+
+<div class="tab-bar">
+  <app-app-tabs></app-app-tabs>
+</div>

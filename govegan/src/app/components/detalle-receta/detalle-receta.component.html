@@ -1,0 +1,148 @@
+<ion-toolbar class="ion-text-center">
+  <ion-title class="titulo">Receta</ion-title>
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="" (click)="cerrarModal()"></ion-back-button>
+  </ion-buttons>
+</ion-toolbar>
+
+<ion-content [fullscreen]="true">
+  <div class="contenido">
+    <div class="contenido__rating">
+      <div class="contenido__estrellas">
+        <!-- Mostrar estrellas completas -->
+        <span class="stars-number-length">({{ ratings.length }}) </span>
+        <ion-icon name="star" *ngFor="let star of fullStars" class="star-icon"></ion-icon>
+        <!-- Mostrar media estrella si aplica -->
+        <ion-icon name="star-half" *ngIf="hasHalfStar" class="star-icon"></ion-icon>
+        <!-- Mostrar estrellas vacías restantes -->
+        <ion-icon name="star-outline" *ngFor="let star of emptyStars" class="star-icon"></ion-icon>
+        <!-- Mostrar rating exacto -->
+        <span class="stars-number"> {{ currentRating.toFixed(1) }}</span>
+      </div>
+    </div>
+    <div class="contenido__titulo-wrapper">
+      <h1 class="contenido__titulo ion-text-center">{{ receta.title }}</h1>
+    </div>
+    <div class="contenido__receta">
+      <div class="contenido__imagen">
+        <img [src]="receta.image" alt="{{ receta.title }}">
+      </div>
+      <div class="contenido__detalles">
+        <div class="contenido__valores-nutricionales">
+          <ion-icon name="restaurant-outline" class="icon"></ion-icon>
+          <h2>Informacion Nutricional</h2>
+          <p><strong>Calorías:</strong> {{ receta.nutritionalInfo.totalKcal }} kcal</p>
+          <p><strong>Proteínas:</strong> {{ receta.nutritionalInfo.protein.gr.replace('.', '') }}</p>
+          <p><strong>Carbohidratos:</strong> {{ receta.nutritionalInfo.carbohydrates.gr.replace('.', '') }}</p>
+          <p><strong>Grasas:</strong> {{ receta.nutritionalInfo.fat.gr.replace('.', '') }}</p>
+        </div>
+        <div class="contenido__informacion-adicional">
+          <ion-icon name="information-circle-outline" class="icon"></ion-icon>
+          <h2>Información Adicional</h2>
+          <p><strong>Dificultad:</strong> {{ receta.recipeData.difficulty }}</p>
+          <p><strong>Tiempo de preparación:</strong> {{ receta.recipeData.preparationTime }}</p>
+          <p><strong>Rendimiento:</strong> {{ receta.recipeData.yields }}</p>
+          <p><strong>Especialidades:</strong> {{ receta.specialNeeds.join(', ') }}</p>
+        </div>
+        <div class="contenido__rendimiento-por-edad">
+          <ion-icon name="people-outline" class="icon"></ion-icon>
+          <h2>Rendimiento por Edad</h2>
+          <ul>
+            <li><strong>Adultos:</strong> {{ receta.yieldPerAge.adult }}</li>
+            <li><strong>Niños (3 a 8 años):</strong> {{ receta.yieldPerAge.threeToEight }}</li>
+            <li><strong>Niños (9 a 12 años):</strong> {{ receta.yieldPerAge.nineToTwelve }}</li>
+          </ul>
+        </div>
+        <div class="contenido__ingredientes">
+          <ul>
+            <div class="ion-text-center">
+              <ion-icon name="basket-outline" class="icon"></ion-icon>
+              <h2>Ingredientes</h2>
+            </div>
+            <li *ngFor="let ingrediente of receta.ingredientLines; let i = index"
+              [class.ocultar]="i >= 3 && !mostrarIngredientes">{{ ingrediente }}</li>
+            <ion-button size="small" fill="clear" class="ver-mas-button" (click)="mostrarIngredientes = !mostrarIngredientes">
+              {{ mostrarIngredientes ? 'Ver menos...' : 'Ver más...' }}
+            </ion-button>
+          </ul>
+        </div>
+        <div class="contenido__preparacion">
+          <ol>
+            <div class="ion-text-center">
+              <ion-icon name="book-outline" class="icon"></ion-icon>
+              <h2>Preparación</h2>
+           </div>
+            <li *ngFor="let paso of receta.directions; let i = index"
+              [class.ocultar]="i >= 2 && !mostrarPreparacion">{{ paso }}</li>
+              <ion-button size="small" fill="clear" class="ver-mas-button" (click)="mostrarPreparacion = !mostrarPreparacion">
+                {{ mostrarPreparacion ? 'Ver menos...' : 'Ver más...' }}
+              </ion-button>
+          </ol>
+        </div>
+        <div *ngIf="receta.chefTips" class="contenido__tips">
+          <ion-icon name="bulb-outline" class="icon"></ion-icon>
+          <h2>Consejo del Chef</h2>
+            <p>{{ receta.chefTips }}</p>
+        </div>
+      </div>
+    </div>
+    
+
+    
+    <div *ngIf="showRatingForm">
+      <div class="contenido__rating--margin">
+        <div class="contenido__estrellas">
+          <ion-icon name="star-outline" class="star-icon" (click)="setRating(1)" [name]="userRating >= 1 ? 'star' : 'star-outline'"></ion-icon>
+          <ion-icon name="star-outline" class="star-icon" (click)="setRating(2)" [name]="userRating >= 2 ? 'star' : 'star-outline'"></ion-icon>
+          <ion-icon name="star-outline" class="star-icon" (click)="setRating(3)" [name]="userRating >= 3 ? 'star' : 'star-outline'"></ion-icon>
+          <ion-icon name="star-outline" class="star-icon" (click)="setRating(4)" [name]="userRating >= 4 ? 'star' : 'star-outline'"></ion-icon>
+          <ion-icon name="star-outline" class="star-icon" (click)="setRating(5)" [name]="userRating >= 5 ? 'star' : 'star-outline'"></ion-icon>
+        </div>
+      </div>
+      <ion-button (click)="confirmRating()" class="rate-button" expand="block">Añadir tu valoración</ion-button>
+    </div>
+    <ion-button (click)="toggleRating() ; setRating(0)" class="rate-button" expand="block">{{ showRatingForm ? 'Cancelar Valoración' : 'Valorar' }}</ion-button>
+
+    <ion-button expand="block" class="comments-button" (click)="toggleComments()">
+      {{ showComments ? 'Ocultar Comentarios' : 'Seccion de Comentarios' }}
+    </ion-button>
+    <div *ngIf="showComments" class="comentarios">
+      <ion-buttons slot="end" class="boton-esquina">
+        <ion-button (click)="refreshComments()" fill="clear" size="small" slot="end">
+          <ion-icon slot="icon-only" name="refresh"></ion-icon>
+        </ion-button>        
+      </ion-buttons>
+      <div *ngIf="!flagNoComments">
+        <div class="comentarios-lista">
+          <ion-list>
+            <ion-item *ngFor="let comment of displayedComments">
+              <ion-avatar slot="start">
+                <img [src]="userProfile.profilePicture || 'https://picsum.photos/175/175?random='" alt="avatar" />
+              </ion-avatar>
+              <ion-label>
+                <h2>{{ comment.username }}</h2>
+                <p>{{ comment.content }}</p>  
+                <p class="fecha">{{ comment.creationDate}}</p>
+              </ion-label>
+              <ion-button fill="clear" slot="end" *ngIf="isCurrentUserComment(comment.username)" (click)="deleteComment(comment)">
+                <ion-icon class="icono-basurero" name="trash-outline"></ion-icon>
+              </ion-button>
+            </ion-item>
+          </ion-list>
+        </div>
+        <div class="ion-text-center">
+          <ion-button size="small" fill="clear" (click)="loadMoreComments()" [disabled]="displayedComments.length >= totalComments">
+            Cargar más comentarios
+          </ion-button>
+        </div>
+      </div>
+      <div *ngIf="flagNoComments" class="ion-text-center sinComentarios--centrar ion-padding">
+        <img src="assets/icon/noComment.svg" class="error__icon" alt="Icono de comidas">
+        <ion-title class="titulo__error">Sin Comentarios</ion-title>
+        <p class="texto__error">Sé el primero en comentar la receta!</p>
+      </div>
+      <ion-button class="add-comment-button" expand="block" (click)="addComment()">Añadir Comentario</ion-button>
+    </div>
+    
+  </div>
+</ion-content>

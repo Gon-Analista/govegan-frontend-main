@@ -1,0 +1,68 @@
+
+<ion-toolbar class="ion-text-center">
+  <ion-title class="titulo">Recetas</ion-title>
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="/"></ion-back-button>
+  </ion-buttons>
+</ion-toolbar>
+
+<ion-searchbar mode="ios" show-clear-button="focus" [debounce]="1000" (ionInput)="buscarReceta($event.target.value || '')"></ion-searchbar>
+
+<ion-content>
+  <div *ngIf="!flagError">
+    <!-- Category Swiper -->
+    <swiper-container slides-per-view="4" loop="true" *ngIf="!responseBusqueda?.page?.content">
+      <ng-container *ngFor="let specialNeed of specialNeeds">
+        <swiper-slide class="swiper-category">
+          <div class="category-card" 
+               [ngClass]="{ 'selected': specialNeed.variables === selectedSpecialNeed }" 
+               (click)="specialNeedSelected(specialNeed.variables)"
+               clickeable>
+            <p class="category--name ion-text-center">{{ specialNeed.nombres }}</p>
+          </div>
+        </swiper-slide>
+      </ng-container>
+    </swiper-container>
+    
+    <ion-list *ngIf="responseBusqueda?.page?.content">
+      <div class="ion-text-center paginador">
+        <ion-button class="boton--color" size="small" fill="outline" (click)="cambiarPaginaBusqueda(-1)" [disabled]="pageNumberBusqueda === 0">Anterior</ion-button>
+        <span class="paginador__texto">Página: {{ pageNumberBusqueda + 1 }}</span>
+        <ion-button class="boton--color" size="small" fill="outline" (click)="cambiarPaginaBusqueda(1)" [disabled]="pageNumberBusqueda === responseBusqueda.page.totalPages - 1">Siguiente</ion-button>
+      </div>
+      <ion-card *ngFor="let recipe of responseBusqueda.page.content" class="carta" (click)="abrirModal(recipe)">
+        <app-vista-recetas [recipe]="recipe" [favoriteRecipes]="favoriteRecipes"></app-vista-recetas>
+      </ion-card>
+    </ion-list>
+    <ion-list *ngIf="response?.page?.content && !responseBusqueda?.page?.content && !flagSearchNeeds">
+      <div class="ion-text-center paginador">
+        <ion-button class="boton--color" size="small" fill="outline" (click)="cambiarPaginaAll(-1)" [disabled]="pageNumberAll === 0">Anterior</ion-button>
+        <span class="paginador__texto">Página: {{ pageNumberAll + 1 }}</span>
+        <ion-button class="boton--color" size="small" fill="outline" (click)="cambiarPaginaAll(1)" [disabled]="pageNumberAll === response.page.totalPages - 1">Siguiente</ion-button>
+      </div>
+      <ion-card *ngFor="let recipe of response.page.content" class="carta" (click)="abrirModal(recipe)">
+        <app-vista-recetas [recipe]="recipe" [favoriteRecipes]="favoriteRecipes"></app-vista-recetas>
+      </ion-card>
+    </ion-list>
+    <ion-list *ngIf="responseSpecialNeeds?.page?.content && !responseBusqueda?.page?.content && flagSearchNeeds">
+      <div class="ion-text-center paginador">
+        <ion-button class="boton--color" size="small" fill="outline" (click)="cambiarPaginaSpecialNeeds(-1)" [disabled]="pageNumberSpecialNeeds === 0">Anterior</ion-button>
+        <span class="paginador__texto">Página: {{ pageNumberSpecialNeeds + 1 }}</span>
+        <ion-button class="boton--color" size="small" fill="outline" (click)="cambiarPaginaSpecialNeeds(1)" [disabled]="pageNumberSpecialNeeds === responseSpecialNeeds.page.totalPages - 1">Siguiente</ion-button>
+      </div>
+      <ion-card *ngFor="let recipe of responseSpecialNeeds.page.content" class="carta" (click)="abrirModal(recipe)">
+        <app-vista-recetas [recipe]="recipe" [favoriteRecipes]="favoriteRecipes"></app-vista-recetas>
+      </ion-card>
+    </ion-list>
+ </div>
+  <div *ngIf="flagError" class="ion-text-center sinResultados--centrar ion-padding">
+    <img src="assets/icon/noRecipes.svg" class="error__icon" alt="Icono de comidas">
+    <ion-title class="titulo__error">Sin resultados...</ion-title>
+    <p class="texto__error">Intente buscar una palabra clave diferente o ajuste un poco su búsqueda.</p>
+  </div>
+  <br><br><br><br>
+</ion-content>
+
+<div class="tab-bar">
+  <app-app-tabs></app-app-tabs>
+</div>

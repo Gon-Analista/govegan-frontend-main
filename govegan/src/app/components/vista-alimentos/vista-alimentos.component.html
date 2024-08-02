@@ -1,0 +1,38 @@
+<ion-card-header class="carta__tituloFood">
+  <div class="titulo-contenedor">
+    <app-vista-categorias [categorias]="food.category.categoryCode"></app-vista-categorias>
+    <ion-card-title class="card__title">{{ food.name }}</ion-card-title>
+  </div>
+</ion-card-header>
+<ion-card-content>
+  <p><strong>Porcentaje de agua:</strong> {{ food.waterPercentage }}%</p>
+  <p><strong>Calorías:</strong> {{ food.caloriesKcal }} Kcal</p>
+  <p><strong>Proteína:</strong> {{ food.proteinG }} g</p>
+  <p><strong>Grasa:</strong> {{ food.totalFatG }} g</p>
+  <div class="food-actions ion-text-center">
+    <ion-button
+      class="iconoAlergia" 
+      fill="clear" 
+      [color]="isAllergicFood(food.id) ? 'danger' : 'medium'" 
+      (click)="$event.stopPropagation(); toggleAllergyFood(food, $event)"
+    >
+      <ion-icon name="alert" slot="icon-only"></ion-icon>
+    </ion-button>
+    <ion-button 
+      class="iconoDislike" 
+      fill="clear" 
+      [color]="isDislikedFood(food.id) ? 'danger' : 'medium'" 
+      (click)="$event.stopPropagation(); toggleDislikeFood(food , $event)"
+    >
+      <ion-icon name="thumbs-down-sharp" slot="icon-only"></ion-icon>
+    </ion-button>
+    <ion-button 
+      class="iconoFavorito" 
+      fill="clear" 
+      [color]="isFavoriteFood(food.id) ? 'danger' : 'medium'" 
+      (click)="$event.stopPropagation(); toggleFavoriteFood(food , $event)"
+    >
+      <ion-icon name="heart" slot="icon-only"></ion-icon>
+    </ion-button>
+  </div>
+</ion-card-content>

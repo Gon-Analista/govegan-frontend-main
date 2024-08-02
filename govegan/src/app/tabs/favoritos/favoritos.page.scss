@@ -1,0 +1,188 @@
+.titulo {
+  margin-right: 14vw;
+  font-size: 4vw; 
+  font-weight: 600;
+  color: #272727;
+}
+
+ion-toolbar {
+  --background: #fff;
+}
+
+ion-segment {
+  background-color: #f1f1f1;
+  border-radius: 16px;
+}
+
+ion-segment-button {
+  --background: #f1f1f1;
+  --background-checked: #ff8a65;
+  --color: #666;
+  --color-checked: #fff;
+  --indicator-color: transparent;
+}
+
+.segmento__alimentos--bordes,
+.segmento__recetas--bordes {
+  --border-radius: 0px;
+}
+
+.carta:active{
+  transform: scale(1.03); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  background-color: #d4fcd4;
+}
+
+.carta:hover {
+  transform: scale(1.03); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  background-color: #d4fcd4;
+}
+
+.carta__contenidoFood {
+  padding: 1.5vw;
+}
+
+.carta {
+  background-color: #EFF7EE;
+  border-radius: 2vw;
+  margin-bottom: 8vw; 
+  margin-left: 5vw; 
+  margin-right: 5vw;
+  box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  border: none; 
+  overflow: hidden; 
+}
+
+
+.tab-bar {
+  position: fixed;
+  bottom: 0; 
+  width: 100%;
+  height: 70px;
+}
+
+.nombreAlimento {
+  font-size: 17px;
+}
+
+
+.svg__corazon {
+  width: auto;
+  max-width: 5vw;
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.iconoFavorito:active,
+.iconoFavorito:hover,
+.svg__corazon:active,
+.svg__corazon:hover {
+  transition: ease 0.4s;
+  transform: scale(1.1);
+}
+
+.favorito-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  cursor: pointer;
+  background: none; 
+  border: none; 
+  box-shadow: none; 
+}
+
+.paginador {
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.boton--color {
+  --border-color: #91C788;
+  color: #272727;
+}
+
+.paginador__texto {
+  margin: 0 20px;
+}
+
+.carta__tituloFood .titulo-contenedor {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.carta__tituloFood .titulo-contenedor span {
+  flex: 1;
+  text-align: left;
+  margin-right: 10px;
+}
+
+.carta__tituloFood .iconoFavorito {
+  flex: 0 0 auto;
+}
+
+.carta__contenido {
+  padding: 1vw;
+  border-top: 0.1px solid #3131311f;
+}
+
+.carta__titulo {
+  font-size: 15.5px; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+p {
+  font-size: 14px;
+}
+
+.carta__titulo--padding {
+  padding-right: 2vw;
+}
+
+.carta__imagen {
+  border-top-left-radius: 1vw;
+  border-top-right-radius: 1vw;
+  max-height: 40vw;
+  object-fit: cover;
+  border: none;
+}
+
+.spinner {  
+  height: 159px;
+  width: 346px;
+  color: #f89184;
+}
+
+
+.sinResultados--centrar {
+  position: absolute;
+  top: 25%;
+  text-align: center;
+}
+
+.titulo__error {
+  font-size: 24px;
+  color: #696969;
+}
+
+.texto__error {
+  font-size: 18px;
+  color: #A9A9A9;
+  margin-top: 4px;
+}
+
+.error__icon {
+  width: 280px;
+  height: 280px;
+  padding-bottom: 5px;
+}
+

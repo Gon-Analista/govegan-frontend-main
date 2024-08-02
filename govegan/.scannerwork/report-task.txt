@@ -1,0 +1,6 @@
+projectKey=goVegan
+serverUrl=http://localhost:9000
+serverVersion=10.5.1.90531
+dashboardUrl=http://localhost:9000/dashboard?id=goVegan
+ceTaskId=cea5657b-9ad1-4d73-aab1-6f0822beb0f5
+ceTaskUrl=http://localhost:9000/api/ce/task?id=cea5657b-9ad1-4d73-aab1-6f0822beb0f5

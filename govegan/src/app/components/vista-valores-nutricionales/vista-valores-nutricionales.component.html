@@ -1,0 +1,117 @@
+<ion-toolbar class="ion-text-center">
+  <ion-title class="titulo">Nutricion</ion-title>
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref=""  (click)="cerrarModal()"></ion-back-button>
+  </ion-buttons>
+</ion-toolbar>
+
+<ion-content>
+    <ion-card-header>
+      <div class="header--allign">
+        <ion-card-title class="nombreAlimento">Valores Nutricionales del dia</ion-card-title>
+      </div>
+    </ion-card-header>
+    
+    <ion-card-content>
+      <ion-item lines="none">
+        <ion-label>Calorías de alimentos:</ion-label>
+        <ion-label slot="end">{{ food.caloriesKcal }}kcal</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Proteína:</ion-label>
+        <ion-label slot="end">{{ food.proteinG }}g</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Grasa Total:</ion-label>
+        <ion-label slot="end">{{ food.totalFatG }}g</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Carbohidratos:</ion-label>
+        <ion-label slot="end">{{ food.carbohydratesG }}g</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Fibra Dietética:</ion-label>
+        <ion-label slot="end">{{ food.dietaryFiberG }}g</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Calcio:</ion-label>
+        <ion-label slot="end">{{ food.calciumMg }}mg</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Fósforo:</ion-label>
+        <ion-label slot="end">{{ food.phosphorusMg }}mg</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Hierro:</ion-label>
+        <ion-label slot="end">{{ food.ironMg }}mg</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Tiamina:</ion-label>
+        <ion-label slot="end">{{ food.thiamineMg }}mg</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Riboflavina:</ion-label>
+        <ion-label slot="end">{{ food.riboflavinMg }}mg</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Niacina:</ion-label>
+        <ion-label slot="end">{{ food.niacinMg }}mg</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Vitamina C:</ion-label>
+        <ion-label slot="end">{{ food.vitaminCmg }}mg</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Vitamina A:</ion-label>
+        <ion-label slot="end">{{ food.vitaminAEquivRetinolMcg }}mcg</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Grasa Monoinsaturada:</ion-label>
+        <ion-label slot="end">{{ food.monounsaturatedFatG }}g</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Grasa Poliinsaturada:</ion-label>
+        <ion-label slot="end">{{ food.polyunsaturatedFatG }}g</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Grasa Saturada:</ion-label>
+        <ion-label slot="end">{{ food.saturatedFatG }}g</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Colesterol:</ion-label>
+        <ion-label slot="end">{{ food.cholesterolMg }}mg</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Potasio:</ion-label>
+        <ion-label slot="end">{{ food.potassiumMg }}mg</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Sodio:</ion-label>
+        <ion-label slot="end">{{ food.sodiumMg }}mg</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Zinc:</ion-label>
+        <ion-label slot="end">{{ food.zincMg }}mg</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Magnesio:</ion-label>
+        <ion-label slot="end">{{ food.magnesiumMg }}mg</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Vitamina B6:</ion-label>
+        <ion-label slot="end">{{ food.vitaminB6Mg }}mg</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Vitamina B12:</ion-label>
+        <ion-label slot="end">{{ food.vitaminB12Mcg }}mcg</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Ácido Fólico:</ion-label>
+        <ion-label slot="end">{{ food.folicAcidMcg }}mcg</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Folato Equivalente:</ion-label>
+        <ion-label slot="end">{{ food.folateEquivFDMcg }}mcg</ion-label>
+      </ion-item>
+    </ion-card-content>
+</ion-content>

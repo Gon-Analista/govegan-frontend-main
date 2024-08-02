@@ -1,0 +1,69 @@
+<ion-header collapse="condense">
+  <ion-toolbar>
+    <ion-title size="large"><b>Home</b></ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <br>
+  <div class="titulo">
+    <p>Bienvenid{{ gender === 'OTRO' ? 'e' : gender === 'FEMENINO' ? 'a' : 'o' }} {{ username }}</p>
+  </div>
+  <div class="subtitulo">
+    <p>Encuentra recetas, sigue tu salud y dieta.</p>
+  </div>
+  <div>
+    <swiper-container class="carrusel-container" slides-per-view="1" pagination="true" autoplay>
+      <ng-container *ngFor="let img of responseImageRecetas">
+        <swiper-slide>
+          <ion-img [src]="img" class="carta__imagen"></ion-img>
+          <ion-spinner class="spinner" name="dots"></ion-spinner>
+        </swiper-slide>
+      </ng-container>
+    </swiper-container>
+  </div>
+  <br>
+  <div class="cartaProgreso">
+    <div class="cartaProgreso__contenido ion-padding">
+      <p class="cartaProgreso__texto">Sigue tu progreso diario aquí</p>
+      <ion-button class="cartaProgreso__boton" fill="clear" color="white" (click)="goToPlanificador()">Ver ahora</ion-button>
+    </div>
+  </div>
+  <!--
+  <div class="cartaGps">
+    <div class="cartaGps__contenido ion-padding">
+      <p class="cartaGps__texto">Encuentra restaurantes</p>
+      <ion-button class="cartaGps__boton" fill="clear" color="white" (click)="goToGps()">Ver ahora</ion-button>
+    </div>
+  </div>
+  -->
+  <div class="cartaAlergias">
+    <div class="cartaAlergias__contenido ion-padding">
+      <p class="cartaAlergias__texto">Administra tus alimentos</p>
+      <ion-button class="cartaAlergias__boton" fill="clear" color="white" (click)="goToAdministradorAlimentos()">Ver ahora</ion-button>
+    </div>
+  </div>
+  <br><br>
+  <ion-title class="titulo--favoritos">Escoge tus alimentos favoritos</ion-title>
+  <swiper-container slides-per-view="3" space-between="10" [loop]="true" autoplay>
+    <ng-container *ngFor="let category of categories">
+      <swiper-slide>
+        <div class="category-card" [ngStyle]="{'background-color': getCategoryColor(category.categoryCode)}" (click)="gotoBuscadorAlimentos(category.id)">
+          <div class="category-icon-container">
+            <ion-spinner *ngIf="category.isLoading" class="spinner__category" name="dots"></ion-spinner>
+            <ion-img 
+              [src]="getCategoryIcon(category.categoryCode)" 
+              class="iconoCategoria"
+              (ionImgWillLoad)="category.isLoading = true"
+              (ionImgDidLoad)="category.isLoading = false"
+              (ionError)="category.isLoading = false">
+            </ion-img>
+          </div>
+          <p class="category--name">{{ category.name }}</p>
+        </div>
+      </swiper-slide>
+    </ng-container>
+  </swiper-container>
+</ion-content>
+<div class="tab-bar">
+  <app-app-tabs></app-app-tabs>
+</div>

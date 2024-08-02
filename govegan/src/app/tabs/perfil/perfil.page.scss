@@ -1,0 +1,231 @@
+.titulo {
+    margin-right: 14vw;
+    font-size: 4vw; 
+    font-weight: 600;
+    color: #272727;
+  }
+
+
+  .tab-bar {
+    position: fixed;
+    bottom: 0; 
+    width: 100%;
+    height: 70px;
+  }
+
+
+  .profile-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .profile-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .profile-img-container {
+    position: relative;
+    display: inline-block;
+    width: 180px;
+    height: 180px; 
+    border: 3px solid #FF9385; 
+    border-radius: 50%; 
+    overflow: hidden; 
+    box-sizing: border-box; 
+  }
+  
+  .edit-profile-btn {
+    position: absolute;
+    border-radius: 50%;
+    margin-top: 157px;
+    margin-left: -33px;
+    background-color: #ffffff;
+    color: #FF9385;
+    width: 30px;
+    height: 30px;
+    font-size: 22px;
+  }
+
+  .icono-camara:hover,
+  .icono-camara:focus,
+  .icono-camara:active {
+    transition: transform 0.3s ease;
+    transform: scale(1.2); 
+  }
+  
+  .profile-img {
+    border-radius: 50%;
+    width: 175px;
+    height: 175px; 
+  }
+  
+  .profile-name {
+    font-size: 25px;
+    font-weight: 500;
+  }
+  
+  .profile-status {
+    margin-top: -4px;
+    font-size: 16px;
+    color: #A1A1A1;
+  }
+  
+  .profile-options {
+    width: 100%;
+  }
+  
+  .profile-options ion-item {
+    --border-style: none;
+    margin: 25px 0;
+    --background: #fff;
+    border-radius: 10px;
+  }
+  
+  .profile-options ion-item:hover {
+    --background: #f8f8f8;
+  }
+  
+  .icon--colorNaranja {
+    color: #FF9385;
+  }
+
+  .icon--colorGris {
+    color: #909090;
+  }
+
+  .texto--colorGris {
+    color: #707070;
+  }
+
+  
+  .file-input {
+    display: none;
+  }
+  
+  .file-label {
+    display: inline-block;
+    width: 100%;
+    cursor: pointer;
+    --ion-color-base: #FF9385 !important;
+  }
+
+  .upload-button {
+    --background: #FF9385;
+    --background-hover: #f35e4a;
+    --background-activated: #ee5e4b;
+    --background-focused: #FF9385;
+    --color: white;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  
+  .upload-button:disabled {
+    --background: #d4d4d4;
+    --color: #a1a1a1;
+  }
+  
+  ion-item {
+    --highlight-color-focused: var(--ion-color-primary);
+    --min-height: 80px;
+    margin-bottom: 20px;
+  }
+  
+  ion-label {
+    font-weight: bold;
+    color: var(--ion-color-primary);
+  }
+  
+  .my-custom-alert {
+    z-index: 20000; // Ajusta el z-index según sea necesario para asegurarte de que aparezca sobre el modal
+  }
+
+  .profile-message {
+    ion-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+
+  .preview-container {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+
+  .image-crop-container {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+    border-radius: 50%;
+  }
+  
+  .image-crop-wrapper {
+    position: absolute;
+    cursor: pointer;
+  }
+  
+  .image-crop-wrapper img {
+    max-width: none;
+    max-height: none;
+  }
+
+  
+  .preview-title {
+    font-size: 20px;
+    font-weight: 500;
+    color: #272727;
+    margin-bottom: 15px;
+  }
+  
+  .preview-img-container {
+    margin: 0 auto;
+    cursor: pointer;
+  }
+  
+  .preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .preview-instruction {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #A1A1A1;
+  }
+  
+  
+  // Añadir un nuevo estilo para el contenedor del modal
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  // Estilo para el botón de seleccionar archivo
+  .file-select-button {
+    --background: #FF9385;
+    --background-hover: #f35e4a;
+    --background-activated: #ee5e4b;
+    --background-focused: #FF9385;
+    --color: white;
+    --border-radius: 16px;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  
+  // Estilo para el nombre del archivo seleccionado
+  .selected-file-name {
+    font-size: 14px;
+    color: #707070;
+    margin-top: 5px;
+  }

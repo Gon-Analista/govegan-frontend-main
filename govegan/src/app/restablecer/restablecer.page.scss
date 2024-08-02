@@ -1,0 +1,54 @@
+.titulo {
+  margin-right: 14vw;
+  font-size: 4vw; 
+  font-weight: 600;
+  color: #272727;
+}
+
+
+.registrarse {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #7C7C7C;
+    font-size: 0.9rem;
+  }
+  
+  .labels--bordes {
+    --border-radius: 15px;
+    --border-color: #91C788;
+  }
+  
+  .labels--bordes:hover {
+    --border-color: #1DA1F2;
+  }
+  
+  .logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .icon{
+    font-size: 1.5rem;
+    color: #91C788;
+  }
+  
+  .boton__recuperar--color {
+    --background: #91C788;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: capitalize;
+  }
+  
+  .boton__registrarse--color {
+    text-transform: capitalize;
+    font-weight: 600;
+    color: #91C788;
+    margin-left: -0.6rem;
+  }
+  
+  .divider {
+    border-top: 1px solid #000;
+  }
+  

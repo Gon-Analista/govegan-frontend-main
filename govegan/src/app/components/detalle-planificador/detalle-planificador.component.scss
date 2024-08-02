@@ -1,0 +1,176 @@
+.titulo {
+  margin-right: 14vw;
+  font-size: 4vw; 
+  font-weight: 600;
+  --color: #272727;
+}
+
+ion-toolbar {
+  --background: #fff;
+}
+
+
+ion-segment {
+  background-color: #f1f1f1;
+  border-radius: 0px;
+}
+
+ion-segment-button {
+  --background: #f1f1f1;
+  --background-checked: #91C788;
+  --color: #666;
+  --color-checked: #fff;
+  --indicator-color: transparent;
+}
+
+.segmento__alimentos--bordes,
+.segmento__recetas--bordes {
+  --border-radius: 5px;
+}
+
+.alimento-item,
+.favorite-item,
+.receta-item {
+  margin: 0.5em 0;
+  padding: 0.5em;
+  background-color: #ffffff;
+}
+
+ion-label {
+  font-size: 1em;
+}
+
+.alimentoSize {
+  font-size: 1em;
+}
+
+.botonRedondo {
+  --color: #91C788;
+  --padding-start: 0.5em;
+  --padding-end: 0.5em;
+  --border-radius: 12px;
+  --border-color: #91C788;
+}
+
+.add-to-breakfast-button {
+  --background: #4caf50;
+  --border-radius: 8px;
+  --color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.boton__ingresar--color {
+  --background: #91C788;
+  font-weight: 700;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.1rem;
+  text-transform: capitalize;
+  color: #ffffff;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+}
+
+.input--gramos {
+  width: 50px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.input-label {
+  position: absolute;
+  margin-left: 43px;
+}
+
+.tab-bar {
+  position: fixed;
+  bottom: 0; 
+  width: 100%;
+  height: 70px;
+}
+
+.boton--color {
+  --border-color: #91C788;
+  color: #272727;
+}
+
+.paginador {
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+}
+
+.iconoCategoria {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  left: 19%;
+  vertical-align: middle;
+}
+
+.iconoReceta {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+  vertical-align: middle;
+  color: #91C788;
+}
+
+
+.tituloAlimento--tamaño {
+  font-size: 14px;
+}
+
+.tituloReceta--tamaño {
+  font-size: 14px;
+}
+
+.paginador__texto {
+  margin: 0 20px;
+}
+
+.alimento-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 64px;
+  width: 100%;
+}
+
+.alimento-name {  
+  margin-bottom: 4px;
+}
+
+
+.alimento-calories {
+  white-space: nowrap;
+}
+
+
+.sinResultados--centrar {
+  position: absolute;
+  top: 30%;
+  text-align: center;
+}
+
+.error__icon {
+  width: 230px;
+  height: 230px;
+  padding-bottom: 5px;
+}
+
+.titulo__error {
+  font-size: 24px;
+  color: #696969;
+}
+
+.texto__error {
+  font-size: 18px;
+  color: #A9A9A9;
+}

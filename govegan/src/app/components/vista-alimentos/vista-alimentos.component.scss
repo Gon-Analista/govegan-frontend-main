@@ -1,0 +1,43 @@
+.carta__tituloFood,
+.titulo-contenedor {
+  display: flex;
+  align-items: center;
+}
+
+.card__title {
+  margin-left: 6px;
+}
+
+.carta__tituloFood .titulo-contenedor span {
+    flex: 1;
+    text-align: left;
+    margin-right: 10px;
+  }
+  
+.carta__tituloFood .iconoFavorito {
+    flex: 0 0 auto;
+}
+
+
+.iconoDislike:active,
+.iconoDislike:hover,
+.iconoAlergia:active,
+.iconoAlergia:hover,
+.iconoFavorito:active,
+.iconoFavorito:hover {
+  transition: ease 0.4s;
+  transform: scale(1.15);
+}
+
+
+.food-actions {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.food-actions ion-button {
+    flex: 1;
+    margin: 0 5px;
+}
+

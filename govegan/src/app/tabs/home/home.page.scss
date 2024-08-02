@@ -1,0 +1,240 @@
+.titulo {
+  text-align: center;
+  font-size: 25px;
+  font-weight: 600;
+  color: #91C788;
+}
+
+.subtitulo {
+  text-align: center;
+  font-size: 18px;
+  color: #7B7B7B;
+  margin-top: -20px;
+}
+
+.carrusel-container {
+  width: 95%;
+  height: 75%;
+  border: 2px solid #91C788;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.titulo--favoritos {
+  font-size: 20px;
+  color: #272727;
+  margin-left: -10px;
+  padding-bottom: 20px;
+
+}
+
+swiper-slide {
+  display: -webkit-inline-box;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {  
+  height: 160px;
+  width: 349px;
+  color: #8bef77;
+}
+
+.spinner__category {  
+  height: 160px;
+  width: 349px;
+  color: #FF8473;
+}
+
+
+
+.cartaProgreso {
+  width: 320px;
+  height: 80px;
+  background-color: #9E9BC7;
+  border-radius: 20px;
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cartaProgreso__contenido {
+  display: flex;
+  align-items: center;
+}
+
+
+
+.cartaProgreso__texto {
+  font-size: 19px;
+  color: white;
+  margin: 10px; 
+}
+
+.cartaProgreso__boton {
+  border-radius: 10px;
+  background-color: white;
+  color: #9E9BC7;
+  text-transform: capitalize;
+  position: relative;
+  padding-right: 7px; 
+}
+
+.cartaProgreso__boton::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 5px; 
+  padding-right: 4px;
+  transform: translateY(-50%);
+  border-top: 4px solid transparent;
+  border-left: 7px solid #9E9BC7;
+  border-bottom: 4px solid transparent;
+  border-radius: 2px;
+}
+
+.tab-bar {
+  position: fixed;
+  bottom: 0; 
+  width: 100%;
+  height: 70px;
+}
+
+.cartaGps {
+  width: 320px;
+  height: 80px;
+  background-color: #9BBFC7;
+  border-radius: 20px;
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.cartaGps__contenido {
+  display: flex;
+  align-items: center;
+}
+
+.cartaGps__texto {
+  font-size: 19px;
+  color: white;
+  margin: 10px; 
+}
+
+.cartaGps__boton {
+  border-radius: 10px;
+  background-color: white;
+  color: #9BBFC7;
+  text-transform: capitalize;
+  position: relative;
+  padding-right: 7px; 
+}
+
+.cartaGps__boton::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 5px; 
+  padding-right: 4px;
+  transform: translateY(-50%);
+  border-top: 4px solid transparent;
+  border-left: 7px solid #9BBFC7;
+  border-bottom: 4px solid transparent;
+  border-radius: 2px;
+}
+
+.cartaAlergias {
+  width: 320px;
+  height: 80px;
+  background-color: #C79BA9;
+  border-radius: 20px;
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cartaAlergias__contenido {
+  display: flex;
+  align-items: center;
+}
+
+.cartaAlergias__texto {
+  font-size: 19px;
+  color: white;
+  margin: 10px; 
+}
+
+.cartaAlergias__boton {
+  border-radius: 10px;
+  background-color: white;
+  color: #C79BA9;
+  text-transform: capitalize;
+  position: relative;
+  padding-right: 7px; 
+}
+
+.cartaAlergias__boton::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 5px; 
+  padding-right: 4px;
+  transform: translateY(-50%);
+  border-top: 4px solid transparent;
+  border-left: 7px solid #C79BA9;
+  border-bottom: 4px solid transparent;
+  border-radius: 2px;
+}
+
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 15px;
+  border-radius: 32px;
+  --background-color:white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.iconoCategoria:active,
+.iconoCategoria:hover{
+  transition: ease 0.4s;
+  transform: scale(1.1);
+}
+
+.cartaProgreso__boton:active,
+.cartaProgreso__boton:hover,
+.cartaGps__boton:active,
+.cartaGps__boton:hover,
+.cartaAlergias__boton:active,
+.cartaAlergias__boton:hover {
+  transition: ease 0.4s;
+  transform: scale(1.05);
+}
+
+
+.category--name{
+  font-size: 14px;
+  padding-top: 5px;
+  margin: 0;
+}
+
+.category-icon-container {
+  width: 80px;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconoCategoria {
+  width: 50px;
+  height: 50px;
+}

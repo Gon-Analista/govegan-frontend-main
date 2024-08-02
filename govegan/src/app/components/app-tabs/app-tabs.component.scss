@@ -1,0 +1,41 @@
+.tab--padding {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  
+  .icono--colorVerde,
+  .icono--colorGris,
+  .icono--colorBlanco {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .icono--colorVerde {
+    color: #91C788;
+  }
+  
+  .icono--colorGris {
+    color: #999999;
+  }
+  
+  .icono--colorBlanco {
+    color: #FFFEFE;
+  }
+  
+  .boton--circuloVerde {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .boton--circuloVerde::before {
+    content: '';
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    background-color: #9FE860;
+    border-radius: 50%;
+    top: calc(50% - 22px);
+    left: calc(50% - 24px);
+    z-index: 0;
+  }
+  

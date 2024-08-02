@@ -1,0 +1,170 @@
+<ion-toolbar class="ion-text-center">
+  <ion-title class="titulo">{{ mealType }}</ion-title>
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="" (click)="cerrarModal()"></ion-back-button>
+  </ion-buttons>
+</ion-toolbar>
+
+<ion-content>
+  <br>
+  <ion-segment (ionChange)="segmentChanged($event)" value="alimentos">
+    <ion-segment-button value="alimentos" class="segmento__alimentos--bordes">
+      <ion-label>Alimentos</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="favoritos" class="segmento__recetas--bordes" (click)="presentPopover($event)">
+      <ion-label>Favoritos</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="recetas" class="segmento__recetas--bordes">
+      <ion-label>Recetas</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div *ngIf="showAlimentos" class="alimentos">
+    <br>
+    <ion-searchbar mode="ios" placeholder="¿Qué has comido?" show-clear-button="focus" [debounce]="1000" (ionInput)="buscarAlimento($event.target.value || '')"></ion-searchbar>
+    <br>
+    <div *ngIf="response?.page?.content && !responseBusquedaAlimentos?.page?.content && !flagErrorFoods">
+    <div class="ion-text-center paginador">
+      <ion-button class="boton--color" size="small" fill="outline" (click)="cambiarPaginaAlimentos(-1)" [disabled]="pageNumberAlimentos === 0">Anterior</ion-button>
+      <span class="paginador__texto">Página: {{ pageNumberAlimentos + 1 }}</span>
+      <ion-button class="boton--color" size="small" fill="outline" (click)="cambiarPaginaAlimentos(1)" [disabled]="pageNumberAlimentos === responseAlimentos.totalPages - 1">Siguiente</ion-button>
+    </div>
+    <div>
+      <div *ngFor="let food of responseAlimentos" class="alimento-item">
+        <ion-item>
+          <div class="input-container">
+            <ion-input (keypress)="numeric($event)" class="input--gramos" name="caloriesKcal" placeholder="100" maxlength="3" [(ngModel)]="gramosPorAlimento[food.id]"></ion-input>
+            <span class="input-label">g</span>
+          </div>
+          <ion-label class="alimento-details tituloAlimento--tamaño">
+            <app-vista-categorias class="iconoCategoria" [categorias]="food.category.categoryCode"></app-vista-categorias>
+            <div class="alimento-name">{{ food.name }}</div>
+            <div class="alimento-calories">{{ calculateCalories(food.id, food.caloriesKcal) }} calorías en {{ gramosPorAlimento[food.id] || 100 }}g</div>
+          </ion-label>
+          <ion-button class="botonRedondo" fill="outline" slot="end" (click)="addToMeal(food.caloriesKcal, gramosPorAlimento[food.id] || 100) ; addToNutritionalList(food, gramosPorAlimento[food.id] || 100)">+</ion-button>
+        </ion-item>
+      </div>  
+    </div>
+   </div>
+  </div>
+  <div *ngIf="responseBusquedaAlimentos?.page?.content && !flagErrorFoods">
+    <div class="ion-text-center paginador">
+      <ion-button class="boton--color" size="small" fill="outline" (click)="cambiarPaginaBusquedaAlimentos(-1)" [disabled]="pageNumberBusquedaAlimentos === 0">Anterior</ion-button>
+      <span class="paginador__texto">Página: {{ pageNumberBusquedaAlimentos + 1 }}</span>
+      <ion-button class="boton--color" size="small" fill="outline" (click)="cambiarPaginaBusquedaAlimentos(1)" [disabled]="pageNumberBusquedaAlimentos === responseBusquedaAlimentos.page.totalPages - 1">Siguiente</ion-button>
+    </div>
+    <div>
+      <div *ngFor="let food of responseBusquedaAlimentos.page.content" class="alimento-item">
+        <ion-item>
+          <div class="input-container">
+            <ion-input (keypress)="numeric($event)" class="input--gramos" name="caloriesKcal" placeholder="100" maxlength="3" [(ngModel)]="gramosPorAlimento[food.id]"></ion-input>
+            <span class="input-label">g</span>
+          </div>
+          <ion-label class="alimento-details tituloAlimento--tamaño">
+            <app-vista-categorias class="iconoCategoria" [categorias]="food.category.categoryCode"></app-vista-categorias>
+            <div class="alimento-name">{{ food.name }}</div>
+            <div class="alimento-calories">{{ calculateCalories(food.id, food.caloriesKcal) }} calorías en {{ gramosPorAlimento[food.id] || 100 }}g</div>
+          </ion-label>
+          <ion-button class="botonRedondo" fill="outline" slot="end" (click)="addToMeal(food.caloriesKcal, gramosPorAlimento[food.id] || 100) ; addToNutritionalList(food, gramosPorAlimento[food.id] || 100)">+</ion-button>
+        </ion-item>
+      </div>
+    </div>
+   </div>
+  <div *ngIf="flagErrorFoods" class="ion-text-center sinResultados--centrar ion-padding">
+    <img src="assets/icon/noFoods.svg" class="error__icon" alt="Icono de comidas">
+    <ion-title class="titulo__error">Sin resultados...</ion-title>
+    <p class="texto__error">Intenta buscar una palabra clave diferente o ajuste un poco su búsqueda.</p>
+  </div>
+  <div *ngIf="showFavoritos" class="favoritos ion-text-center">
+    <br>
+    <ion-title class="tituloFavoritos ion-text-center">{{ selectedOption === 'alimentos' ? 'Alimentos Favoritos' : 'Recetas Favoritas' }}</ion-title>
+    <div *ngIf="selectedOption === 'alimentos'">
+      <br>
+      <div class="ion-text-center paginador" *ngIf="favoritePagesFoods > 1">
+        <ion-button class="boton--color" size="small" fill="outline" (click)="cambiarPaginaAlimentosFavoritos(-1)" [disabled]="pageNumberAlimentosFavoritos === 0">Anterior</ion-button>
+        <span class="paginador__texto">Página: {{ pageNumberAlimentosFavoritos + 1 }}</span>
+        <ion-button class="boton--color" size="small" fill="outline" (click)="cambiarPaginaAlimentosFavoritos(1)" [disabled]="pageNumberAlimentosFavoritos === favoritePagesFoods - 1">Siguiente</ion-button>
+      </div>
+      <div *ngFor="let favoriteFood of favoriteFoods" class="favorite-item">
+        <ion-item>
+          <div class="input-container">
+            <ion-input (keypress)="numeric($event)" class="input--gramos" name="caloriesKcal" placeholder="100" maxlength="3" [(ngModel)]="gramosPorAlimento[favoriteFood.data.id]"></ion-input>
+            <span class="input-label">g</span>
+          </div>
+          <ion-label class="alimento-details tituloAlimento--tamaño">
+            <app-vista-categorias class="iconoCategoria" [categorias]="favoriteFood.data.category.categoryCode"></app-vista-categorias>
+            <div class="alimento-name">{{ favoriteFood.data.name }}</div>
+            <div class="alimento-calories">{{ calculateCalories(favoriteFood.data.id, favoriteFood.data.caloriesKcal) }} calorías en {{ gramosPorAlimento[favoriteFood.id] || 100 }} gramos</div>
+          </ion-label>
+          <ion-button class="botonRedondo" fill="outline" slot="end" (click)="removeFavoriteFood(favoriteFood.data.id)">-</ion-button>
+  </ion-item>
+      </div>
+      <div *ngIf="flagErrorFavoritesFoods" class="ion-text-center sinResultados--centrar ion-padding">
+        <img src="assets/icon/favorites-false.svg" class="error__icon" alt="Icono">
+        <ion-title class="titulo__error">Sin favoritos...</ion-title>
+        <p class="texto__error">Añada sus primeras comidas favoritas en el buscador.</p>
+      </div>
+    </div>
+    <div *ngIf="selectedOption === 'recetas'">
+      <br>
+      <div class="ion-text-center paginador" *ngIf="favoritePagesRecipes > 1">
+        <ion-button class="boton--color" size="small" fill="outline" (click)="cambiarPaginaRecetasFavoritas(-1)" [disabled]="pageNumberRecetasFavoritas === 0">Anterior</ion-button>
+        <span class="paginador__texto">Página: {{ pageNumberRecetasFavoritas + 1 }}</span>
+        <ion-button class="boton--color" size="small" fill="outline" (click)="cambiarPaginaRecetasFavoritas(1)" [disabled]="pageNumberRecetasFavoritas === favoritePagesRecipes - 1">Siguiente</ion-button>
+      </div>
+      <div *ngFor="let favoriteRecipe of favoriteRecipes" class="favorite-item">
+        <ion-item>
+          <ion-icon name="restaurant-outline" class="iconoReceta" slot="start"></ion-icon>
+          <ion-label class="tituloReceta--tamaño">{{ favoriteRecipe.data.title }}<br> {{ favoriteRecipe.data.nutritionalInfo.totalKcal }} calorías por porción</ion-label>
+          <ion-button class="botonRedondo" fill="outline" slot="end" (click)="addToMeal(favoriteRecipe.data.nutritionalInfo.totalKcal,100)">+</ion-button>
+        </ion-item>
+      </div>
+      <div *ngIf="flagErrorFavoritesRecipes" class="ion-text-center sinResultados--centrar ion-padding">
+        <img src="assets/icon/favorites-false.svg" class="error__icon" alt="Icono">
+        <ion-title class="titulo__error">Sin favoritos...</ion-title>
+        <p class="texto__error">Añada sus primeras recetas favoritas en el buscador.</p>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showRecetas" class="recetas">
+    <br>
+    <ion-searchbar mode="ios" placeholder="¿Qué has comido?" show-clear-button="focus" [debounce]="1000" (ionInput)="buscarReceta($event.target.value || '')"></ion-searchbar>
+    <br>
+    <div *ngIf="responseRecetas && !responseBusquedaRecetas?.page?.content && !flagErrorRecipes">
+      <div class="ion-text-center paginador">
+        <ion-button class="boton--color" size="small" fill="outline" (click)="cambiarPaginaRecetas(-1)" [disabled]="pageNumberRecetas === 0">Anterior</ion-button>
+        <span class="paginador__texto">Página: {{ pageNumberRecetas + 1 }}</span>
+        <ion-button class="boton--color" size="small" fill="outline" (click)="cambiarPaginaRecetas(1)" [disabled]="pageNumberRecetas === responseRecetas.totalPages - 1">Siguiente</ion-button>
+      </div>
+      <div *ngFor="let receta of responseRecetas" class="receta-item">
+        <ion-item>
+          <ion-icon name="restaurant-outline" class="iconoReceta" slot="start"></ion-icon>
+          <ion-label class="tituloReceta--tamaño">{{ receta.title }}<br>{{ receta.nutritionalInfo.totalKcal }} calorías por porción</ion-label>
+          <ion-button class="botonRedondo" fill="outline" slot="end" (click)="addToMeal(receta.nutritionalInfo.totalKcal,100)">+</ion-button>
+        </ion-item>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="responseBusquedaRecetas?.page?.content && !flagErrorRecipes">
+    <div class="ion-text-center paginador">
+      <ion-button class="boton--color" size="small" fill="outline" (click)="cambiarPaginaBusquedaRecetas(-1)" [disabled]="pageNumberBusquedaRecetas === 0">Anterior</ion-button>
+      <span class="paginador__texto">Página: {{ pageNumberBusquedaRecetas + 1 }}</span>
+      <ion-button class="boton--color" size="small" fill="outline" (click)="cambiarPaginaBusquedaRecetas(1)" [disabled]="pageNumberBusquedaRecetas === responseBusquedaRecetas.page.totalPages - 1">Siguiente</ion-button>
+    </div>
+    <div *ngFor="let receta of responseBusquedaRecetas.page.content" class="receta-item">
+      <ion-item>
+        <ion-icon name="restaurant-outline" class="iconoReceta" slot="start"></ion-icon>
+        <ion-label class="tituloReceta--tamaño">{{ receta.title }}<br>{{ receta.nutritionalInfo.totalKcal }} calorías por porción</ion-label>
+        <ion-button class="botonRedondo" fill="outline" slot="end" (click)="addToMeal(receta.nutritionalInfo.totalKcal,100)">+</ion-button>
+      </ion-item>
+    </div>
+  </div>
+  <div *ngIf="flagErrorRecipes" class="ion-text-center sinResultados--centrar ion-padding">
+    <img src="assets/icon/noRecipes.svg" class="error__icon" alt="Icono de comidas">
+    <ion-title class="titulo__error">Sin resultados...</ion-title>
+    <p class="texto__error">Intenta buscar una palabra clave diferente o ajuste un poco su búsqueda.</p>
+  </div>
+</ion-content>
+<div class="ion-text-center">
+  <ion-button expand="block" class="boton__ingresar--color" (click)="confirmMealAlert()">Añadir {{ mealType }} - {{ listaCompras }}</ion-button>
+</div>

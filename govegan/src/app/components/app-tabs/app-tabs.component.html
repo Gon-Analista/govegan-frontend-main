@@ -1,0 +1,19 @@
+<ion-tabs>
+  <ion-tab-bar slot="bottom" class="tab--padding">
+    <ion-tab-button (click)="goToHome()">
+      <ion-icon name="home-sharp" class="icono--colorVerde"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button (click)="presentPopover($event)">
+      <ion-icon name="search-outline" class="icono--colorGris"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button class="boton--circuloVerde" (click)="goToPerfil()">
+      <ion-icon name="person-outline" class="icono--colorBlanco"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button (click)="goToFavoritos()">
+      <ion-icon name="heart-outline" class="icono--colorGris"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button (click)="goToConfig()">
+      <ion-icon name="settings-sharp" class="icono--colorVerde"></ion-icon>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

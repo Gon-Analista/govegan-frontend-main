@@ -1,0 +1,18 @@
+<ion-img [src]="recipe.image" class="carta__imagen" (ionImgWillLoad)="recipe.isLoading = true" (ionImgDidLoad)="recipe.isLoading = false" (ionError)="recipe.isLoading = false"></ion-img>
+<ion-spinner *ngIf="recipe.isLoading" class="spinner" name="dots"></ion-spinner>
+<ion-card-content class="carta__contenido">
+  <ion-card-title class="carta__titulo">
+    <span class="carta__titulo--padding">{{ recipe.title }}</span>
+    <ion-button 
+      class="iconoFavorito" 
+      fill="clear" 
+      [color]="isFavoriteRecipe(recipe.id || recipe.data?.id) ? 'danger' : 'medium'" 
+      (click)="$event.stopPropagation(); toggleFavoriteRecipe(recipe, $event)"
+    >
+      <ion-icon name="heart" slot="icon-only"></ion-icon>
+    </ion-button>
+  </ion-card-title>
+  <p><strong>Calorías por porción:</strong> {{ recipe.nutritionalInfo.totalKcal }} kcal</p>
+  <p><strong>Dificultad:</strong> {{ recipe.recipeData.difficulty }}</p>
+  <p><strong>Categorias:</strong> {{ recipe.specialNeeds.join(', ') }} </p>
+</ion-card-content>

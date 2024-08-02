@@ -1,0 +1,111 @@
+<ion-toolbar class="ion-text-center">
+  <ion-title class="titulo">
+    Planificador
+  </ion-title>
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="/" (click)="goToHome()"></ion-back-button>
+  </ion-buttons>
+  <ion-buttons slot="end" class="boton-esquina">
+    <ion-button (click)="confirmResetPlanificador()" fill="clear" size="small">
+      <ion-icon  slot="icon-only" name="refresh"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+
+<ion-content>
+  <div class="ion-padding">
+    <div class="container">
+      <div class="meta">
+        <p>{{ calorieGoal }} Kcal</p>
+        <p>Meta</p>
+      </div>
+      <div *ngIf="!showVideo">
+        <circle-progress
+          [percent]="percentage"
+          [radius]="100"
+          [outerStrokeWidth]="16"
+          [innerStrokeWidth]="8"
+          [outerStrokeColor]="color"
+          [innerStrokeColor]="innerColor"
+          [animation]="true"
+          [animationDuration]="800">
+          <div class="inner-content">{{ remainingCalories }}</div>
+          <div>Calorías restantes</div>
+        </circle-progress>
+      </div>
+      <div class="consumido">
+        <p>{{ infoCalorias }} Kcal</p>
+        <p>Consumido</p>
+      </div>
+    </div>
+
+    <div class="water-section">
+      <div class="water-header">
+        <span class="water-amount">Agua {{ waterIngested }}L ({{ waterPercentage }}%)</span>
+        <span class="water-recommendation">Meta actual {{response.data?.waterPerDay}}L</span>
+        <div class="water-controls">
+          <ion-select [(ngModel)]="selectedWaterAmount" interface="popover">
+            <ion-select-option *ngFor="let amount of waterAmounts" [value]="amount">{{ amount }}L</ion-select-option>
+          </ion-select>
+          <ion-button fill="clear" size="small" (click)="addWater()">
+            <ion-icon class="waterIcon ion-text-center" slot="icon-only" name="water"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+      <div class="water-intake">
+        <div class="water-bar">
+          <div class="water-filled" [ngStyle]="{ 'width': waterWidth }"></div>
+        </div>
+      </div>
+      <p class="water-label">Cantidad de agua</p>
+    </div>
+
+    <div class="meals-section">
+      <span class="section-title">Comidas Diarias</span>
+      <div class="meal">
+        <div class="meal-details">
+          <span class="meal-name breakfast">Desayuno</span>
+          <span class="meal-calories">Consumido {{desayuno}} Kcal</span>
+        </div>
+        <ion-button class="botonGris" fill="clear" size="small" (click)="abrirModal('Desayuno')">
+          <ion-icon slot="icon-only" name="add"></ion-icon>
+        </ion-button>
+      </div>
+      <div class="meal">
+        <div class="meal-details">
+          <span class="meal-name lunch">Almuerzo</span>
+          <span class="meal-calories">Consumido {{almuerzo}} Kcal</span>
+
+        </div>
+        <ion-button class="botonGris" fill="clear" size="small" (click)="abrirModal('Almuerzo')">
+          <ion-icon slot="icon-only" name="add"></ion-icon>
+        </ion-button>
+      </div>
+      <div class="meal">
+        <div class="meal-details">
+          <span class="meal-name dinner">Cena</span>
+          <span class="meal-calories">Consumido {{cena}} Kcal</span>
+        </div>
+        <ion-button class="botonGris" fill="clear" size="small" (click)="abrirModal('Cena')">
+          <ion-icon slot="icon-only" name="add"></ion-icon>
+        </ion-button>
+      </div>
+      <div class="meal">
+        <div class="meal-details">
+          <span class="meal-name snacks">Meriendas</span>
+          <span class="meal-calories">Consumido {{meriendas}} Kcal</span>
+        </div>
+        <ion-button class="botonGris" fill="clear" size="small" (click)="abrirModal('Meriendas')">
+          <ion-icon slot="icon-only" name="add"></ion-icon>
+        </ion-button>
+      </div>
+      <div class="ion-text-center">
+        <ion-button class="boton-nutricion" fill="clear" size="small" (click)="abrirModalNutricionales()">Nutrición diaria</ion-button>
+      </div>  
+    </div>
+  </div>
+</ion-content>
+
+<div class="tab-bar">
+  <app-app-tabs></app-app-tabs>
+</div>

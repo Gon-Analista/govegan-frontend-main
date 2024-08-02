@@ -1,0 +1,75 @@
+
+/* Core CSS required for Ionic components to work properly */
+
+@import url('https://fonts.googleapis.com/css2?family=Signika:wght,GRAD@300..700,-30..0&display=swap');
+
+:root,
+:root[mode="md"],
+:root[mode="ios"] {
+    --ion-font-family: 'Signika', sans-serif;
+}
+
+swiper-container {
+    --swiper-pagination-bullet-inactive-color: var(--ion-color-step-200, #FFC0B8);
+    --swiper-theme-color: #FF8473;
+  }
+.loading-wrapper.sc-ion-loading-md {
+    border-radius: 10px;
+    -webkit-padding-start: 24px;
+    padding-inline-start: 24px;
+    -webkit-padding-end: 24px;
+    padding-inline-end: 48px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    -webkit-box-shadow: 0 16px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 16px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  ion-spinner.sc-ion-loading-md {
+    height: 38px;
+    width: 38px;
+    color:  #a5f396;  
+  }
+
+  .loading-content.sc-ion-loading-md {
+    font-size: 17px;
+    display: inline-block;
+    position: relative;
+  }
+
+  .loading-content.sc-ion-loading-md::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    animation: dotAnimation 1s infinite linear;
+  }
+  
+  @keyframes dotAnimation {
+    0% { content: ''; }
+    25% { content: '.'; }
+    50% { content: '..'; }
+    75% { content: '...'; }
+    100% { content: '....';}
+  }
+
+
+
+@import "@ionic/angular/css/core.css";
+@import "~@fortawesome/fontawesome-free/css/all.css";
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+

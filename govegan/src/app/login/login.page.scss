@@ -1,0 +1,72 @@
+.registrarse {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #7C7C7C;
+    font-size: 0.9rem;
+  }
+  
+  .labels--bordes {
+    --border-radius: 15px;
+    --border-color: #91C788;
+  }
+  
+  .labels--bordes:hover {
+    --border-color: #1DA1F2;
+  }
+  
+  .logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .boton__ingresar--color {
+    --background: #91C788;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: capitalize;
+  }
+  
+  .boton__registrarse--color {
+    text-transform: capitalize;
+    font-weight: 600;
+    color: #91C788;
+    margin-left: -0.6rem;
+  }
+  
+  .opciones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #7C7C7C;
+    font-size: 0.9rem;
+  }
+  
+  .divider {
+    margin-top: 30px;
+    border-top: 1px solid #000;
+  }
+  
+  .recuperar {
+    display: flex;
+    text-transform: capitalize;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #91C788;
+  }
+
+
+  .icon{
+    font-size: 1.5rem;
+    color: #91C788;
+  }
+
+
+  .logo__twitter{
+    width: 32px;
+  }
+
+  .logo__facebook{
+    width: 61px;
+  }

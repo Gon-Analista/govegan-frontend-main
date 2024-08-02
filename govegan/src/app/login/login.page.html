@@ -1,0 +1,37 @@
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Login</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div>
+    <br>
+    <div class="ion-padding">
+      <div class="logo">
+        <ion-img src="assets/img/logo.png" ></ion-img>
+      </div>
+      <ion-input class="labels--bordes" autocomplete="off" label="Nombre de usuario" label-placement="stacked" fill="outline" placeholder="Vegano123" [(ngModel)]="username">
+        <i class="icon ion-ios-mail" slot="start"></i>
+      </ion-input>
+      <br>
+      <ion-input class="labels--bordes" autocomplete="off" label="Contraseña" label-placement="stacked" type="password" fill="outline" aria-label="Show/hide" placeholder=" ************" [(ngModel)]="password">
+        <i class="icon ion-ios-lock" slot="start"></i>
+      </ion-input>
+      <ion-button class="recuperar" fill="clear" (click)="gotoRest()">
+        Recuperar contraseña
+      </ion-button>
+      <div>
+        <ion-button shape="round" expand="block" class="boton__ingresar--color" (click)="login()">Ingresar</ion-button>
+      </div>          
+      <ion-segment class="divider"></ion-segment>
+      <br>
+      <div class="registrarse">
+        <ion-label>¿No tienes una cuenta?</ion-label>
+        <ion-button class="boton__registrarse--color" fill="clear" (click)="gotoReg()">Registrarse
+        </ion-button>
+      </div>
+
+    </div>
+  </div>
+  <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+</ion-content>

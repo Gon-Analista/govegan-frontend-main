@@ -1,0 +1,18 @@
+<ion-toolbar class="ion-text-center">
+  <ion-title class="titulo">
+    Configuración
+  </ion-title>
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="/"></ion-back-button>
+  </ion-buttons>
+</ion-toolbar>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-item>
+    <ion-label>Tema Oscuro</ion-label>
+    <ion-toggle (ionChange)="toggleTheme($event)" [checked]="isDarkMode"></ion-toggle>
+  </ion-item>
+</ion-content>
+<div class="tab-bar">
+  <app-app-tabs></app-app-tabs>
+</div>

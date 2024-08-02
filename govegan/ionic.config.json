@@ -1,0 +1,7 @@
+{
+  "name": "govegan",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

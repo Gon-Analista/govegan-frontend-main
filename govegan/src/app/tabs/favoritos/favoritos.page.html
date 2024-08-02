@@ -1,0 +1,94 @@
+<ion-toolbar class="ion-text-center">
+  <ion-title class="titulo">
+    Favoritos
+  </ion-title>
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="/"></ion-back-button>
+  </ion-buttons>
+</ion-toolbar>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <ion-segment c (ionChange)="segmentChanged($event)" value="alimentos">
+    <ion-segment-button value="alimentos" class="segmento__alimentos--bordes">
+      <ion-label>Alimentos</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="recetas" class="segmento__recetas--bordes">
+      <ion-label>Recetas</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div *ngIf="showAlimentos" class="alimentos ion-text-center">
+    <ion-list>
+      <div class="ion-text-center paginador" *ngIf="favoritePagesFoods > 1">
+        <ion-button class="boton--color" size="small" fill="outline" (click)="cambiarPaginaFavoriteFoods(-1)" [disabled]="pageNumberFavoriteFoods === 0">Anterior</ion-button>
+        <span class="paginador__texto">Página: {{ pageNumberFavoriteFoods + 1 }}</span>
+        <ion-button class="boton--color" size="small" fill="outline" (click)="cambiarPaginaFavoriteFoods(1)" [disabled]="pageNumberFavoriteFoods === favoritePagesFoods - 1">Siguiente</ion-button>
+      </div>
+      <ion-card *ngFor="let food of favoriteFoods" class="carta" clickeable (click)="abrirModalAlimento(food.data)">
+        <ion-card-content class="carta__contenidoFood">
+          <ion-card-title class="carta__tituloFood ion-text-center">
+            <div class="titulo-contenedor">
+              <app-vista-categorias [categorias]="food.data.category.categoryCode"></app-vista-categorias>
+              <span class="nombreAlimento">{{ food.data.name }}</span>
+              <ion-button 
+                class="iconoFavorito" 
+                fill="clear" 
+                [color]="isFavoriteFood(food) ? 'danger' : 'medium'" 
+                (click)="RemoveFavoriteAlert(food, $event)"
+              >
+                <ion-icon name="heart" slot="icon-only"></ion-icon>
+              </ion-button>
+            </div>
+          </ion-card-title>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+    <div *ngIf="flagErrorFoods" class="ion-text-center sinResultados--centrar ion-padding">
+      <img src="assets/icon/favorites-false.svg" class="error__icon" alt="Icono">
+      <ion-title class="titulo__error">Sin favoritos...</ion-title>
+      <p class="texto__error">Añada sus primeras comidas favoritas en el buscador.</p>
+    </div>
+  </div>
+
+  <div *ngIf="showRecetas" class="recetas">
+    <ion-list>
+      <div class="ion-text-center paginador" *ngIf="favoritePagesRecipes > 1">
+        <ion-button class="boton--color" size="small" fill="outline" (click)="cambiarPaginaFavoriteRecipes(-1)" [disabled]="pageNumberFavoriteRecipes === 0">Anterior</ion-button>
+        <span class="paginador__texto">Página: {{ pageNumberFavoriteRecipes + 1 }}</span>
+        <ion-button class="boton--color" size="small" fill="outline" (click)="cambiarPaginaFavoriteRecipes(1)" [disabled]="pageNumberFavoriteRecipes === favoritePagesRecipes - 1">Siguiente</ion-button>
+      </div>
+      <ion-card *ngFor="let recipe of favoriteRecipes" class="carta" (click)="abrirModalReceta(recipe.data)">
+        <ion-img [src]="recipe.data.image" class="carta__imagen" (ionImgWillLoad)="recipe.isLoading = true" (ionImgDidLoad)="recipe.isLoading = false" (ionError)="recipe.isLoading = false"></ion-img>
+        <ion-spinner *ngIf="recipe.isLoading" class="spinner" name="dots"></ion-spinner>
+        <ion-card-content class="carta__contenido">
+          <ion-card-title class="carta__titulo">
+            <span class="carta__titulo--padding">{{ recipe.data.title }}</span>
+            <span class="favorito-icon-container">
+              <ion-button 
+                class="iconoFavorito" 
+                fill="clear" 
+                [color]="isFavoriteRecipe(recipe) ? 'danger' : 'medium'" 
+                (click)="RemoveFavoriteAlert(recipe, $event)"
+              >
+                <ion-icon name="heart" slot="icon-only"></ion-icon>
+              </ion-button>
+            </span>
+          </ion-card-title>
+          <p><strong>Calorías totales:</strong> {{ recipe.data.nutritionalInfo.totalKcal }} Kcal</p>
+          <p><strong>Dificultad:</strong> {{ recipe.data.recipeData.difficulty }}</p>
+          <p><strong>Categorias:</strong> {{ recipe.data.specialNeeds.join(', ') }} </p>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+    <div *ngIf="flagErrorRecipes" class="ion-text-center sinResultados--centrar ion-padding">
+      <img src="assets/icon/favorites-false.svg" class="error__icon" alt="Icono">
+      <ion-title class="titulo__error">Sin favoritos...</ion-title>
+      <p class="texto__error">Añada sus primeras recetas favoritas en el buscador.</p>
+    </div>
+  </div>
+  <br><br><br>
+</ion-content>
+<div class="tab-bar">
+  <app-app-tabs></app-app-tabs>
+</div>

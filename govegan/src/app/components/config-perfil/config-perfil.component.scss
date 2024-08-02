@@ -1,0 +1,61 @@
+.titulo {
+    margin-right: 14vw;
+    font-size: 4vw; 
+    font-weight: 600;
+    --color: #272727;
+  }
+
+  .boton--color {
+    --border-color: #91C788;
+    color: #272727;
+    text-transform: capitalize;
+
+  }
+  
+  
+  .contenido {
+    padding: 16px;
+  }
+  
+  ion-item {
+    --background: #ffffff;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  ion-input, ion-select {
+    --padding-start: 16px;
+    --padding-end: 16px;
+  }
+
+  ion-input {
+    font-size: 15px;
+  }
+  
+  ion-list {
+    background-color: #f8f8f8;
+    padding: 16px;
+    border-radius: 8px;
+  }
+  
+  ion-item[lines="none"] {
+    --inner-padding-bottom: 0;
+    --inner-padding-top: 0;
+  }
+  
+  ion-button {
+    margin-left: auto;
+  }
+
+  .label--fontsize{
+    font-size: 14px;
+  }
+  
+  .boton__ingresar--color {
+    --background: #91C788;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: capitalize;
+  }
+  

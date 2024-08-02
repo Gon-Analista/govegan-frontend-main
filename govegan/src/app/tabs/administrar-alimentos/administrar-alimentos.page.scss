@@ -1,0 +1,113 @@
+.titulo {
+    margin-right: 14vw;
+    font-size: 4vw; 
+    font-weight: 600;
+    color: #272727;
+  }
+  
+  ion-toolbar {
+    --background: #fff;
+  }
+  
+  ion-segment {
+    background-color: #f1f1f1;
+    border-radius: 16px;
+  }
+  
+  ion-segment-button {
+    --background: #f1f1f1;
+    --background-checked: #ff8a65;
+    --color: #666;
+    --color-checked: #fff;
+    --indicator-color: transparent;
+  }
+
+  .iconoDislike:active,
+  .iconoDislike:hover,
+  .iconoAlergia:active,
+  .iconoAlergia:hover {
+    transition: ease 0.4s;
+    transform: scale(1.15);
+  }
+  
+  .segmento__alergias--bordes,
+  .segmento__evitados--bordes {
+    --border-radius: 0px;
+  }
+
+
+  .tab-bar {
+    position: fixed;
+    bottom: 0; 
+    width: 100%;
+    height: 70px;
+  }
+
+  .carta__tituloFood .titulo-contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .carta__tituloFood .titulo-contenedor span {
+    flex: 1;
+    text-align: left;
+    margin-right: 10px;
+  }
+  
+  .carta__tituloFood .iconoAlergia {
+    flex: 0 0 auto;
+  }
+
+  .carta {
+    background-color: #dcf3d8;
+    border-radius: 2vw; 
+    margin-bottom: 7vw; 
+    box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    border: none;
+    overflow: hidden; 
+  }
+
+  .nombreAlimento {
+    font-size: 17px;
+  }
+
+  .carta:active{
+    transform: scale(1.03); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    background-color: #d4fcd4;
+  }
+  
+  .carta:hover {
+    transform: scale(1.03); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    background-color: #d4fcd4;
+  }
+  
+  .carta__contenidoFood {
+    padding: 1.5vw;
+  }
+  
+  .carta__tituloFood {
+    padding-top: 2vw;
+  }
+
+
+  .paginador {
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    padding-bottom: 8px;
+    padding-top: 8px;
+
+  }
+  
+  .boton--color {
+    --border-color: #91C788;
+    color: #272727;
+  }
+  
+  .paginador__texto {
+    margin: 0 20px;
+  }

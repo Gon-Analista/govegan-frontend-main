@@ -1,0 +1,86 @@
+<ion-toolbar class="ion-text-center">
+  <ion-title class="titulo">Alimentos</ion-title>
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="/"></ion-back-button>
+  </ion-buttons>
+</ion-toolbar>
+
+<ion-searchbar 
+  mode="ios" 
+  show-clear-button="focus" 
+  [debounce]="1000" 
+  [(ngModel)]="searchTerm"
+  (ionInput)="buscarAlimento($event.target.value || '')">
+</ion-searchbar>
+
+<ion-content class="ion-padding">
+  <ng-container *ngIf="!flagError">
+    <!-- Category Swiper -->
+    <swiper-container slides-per-view="4" loop="true" *ngIf="!responseBusqueda?.page?.content">
+      <ng-container *ngFor="let category of responseCategories">
+        <swiper-slide class="swiper-category">
+          <div class="category-card" [ngClass]="{ 'selected': category.selected }" (click)="selectCategory(category.id)" clickeable>
+            <p class="category--name ion-text-center">{{ category.name }}</p>
+          </div>
+        </swiper-slide>
+      </ng-container>
+    </swiper-container>
+
+    <!-- Search Results List -->
+    <ion-list *ngIf="responseBusqueda?.page?.content">
+      <div class="ion-text-center paginador">
+        <ion-button class="boton--color" size="small" fill="outline" (click)="cambiarPaginaBusqueda(-1)" [disabled]="pageNumberBusqueda === 0">Anterior</ion-button>
+        <span class="paginador__texto">Página: {{ pageNumberBusqueda + 1 }}</span>
+        <ion-button class="boton--color" size="small" fill="outline" (click)="cambiarPaginaBusqueda(1)" [disabled]="pageNumberBusqueda === responseBusqueda.page.totalPages - 1">Siguiente</ion-button>
+      </div>
+      <br>
+      <ng-container *ngFor="let food of responseBusqueda.page.content">
+        <ion-card class="food-card" clickeable (click)="abrirModalAlimento(food)">
+          <app-vista-alimentos [food]="food" [favoriteFoods]="favoriteFoods" [allergicFoods]="allergicFoods" [dislikedFoods]="dislikedFoods"></app-vista-alimentos>
+        </ion-card>
+      </ng-container>
+    </ion-list>
+
+    <!-- All Foods List -->
+    <ion-list *ngIf="response?.page?.content && !responseBusqueda?.page?.content && !flagSearchid">
+      <div class="ion-text-center paginador">
+        <ion-button class="boton--color" size="small" fill="outline" (click)="cambiarPaginaAll(-1)" [disabled]="pageNumberAll === 0">Anterior</ion-button>
+        <span class="paginador__texto">Página: {{ pageNumberAll + 1 }}</span>
+        <ion-button class="boton--color" size="small" fill="outline" (click)="cambiarPaginaAll(1)" [disabled]="pageNumberAll === response.page.totalPages - 1">Siguiente</ion-button>
+      </div>
+      <br>
+      <ng-container *ngFor="let food of response.page.content">
+        <ion-card class="food-card" clickeable (click)="abrirModalAlimento(food)">
+          <app-vista-alimentos [food]="food" [favoriteFoods]="favoriteFoods" [allergicFoods]="allergicFoods" [dislikedFoods]="dislikedFoods"></app-vista-alimentos>
+        </ion-card>
+      </ng-container>
+    </ion-list>
+
+    <!-- Category Foods List -->
+    <ion-list *ngIf="responseCategoriaPorId?.page?.content && !responseBusqueda?.page?.content && flagSearchid">
+      <div class="ion-text-center paginador">
+        <ion-button class="boton--color" size="small" fill="outline" (click)="cambiarPaginaCategory(-1)" [disabled]="pageNumberCategory === 0">Anterior</ion-button>
+        <span class="paginador__texto">Página: {{ pageNumberCategory + 1 }}</span>
+        <ion-button class="boton--color" size="small" fill="outline" (click)="cambiarPaginaCategory(1)" [disabled]="pageNumberCategory === responseCategoriaPorId.page.totalPages - 1">Siguiente</ion-button>
+      </div>
+      <br>
+      <ng-container *ngFor="let food of responseCategoriaPorId.page.content">
+        <ion-card class="food-card" clickeable (click)="abrirModalAlimento(food)">
+          <app-vista-alimentos [food]="food" [favoriteFoods]="favoriteFoods" [allergicFoods]="allergicFoods" [dislikedFoods]="dislikedFoods"></app-vista-alimentos>
+        </ion-card>
+      </ng-container>
+    </ion-list>
+  </ng-container>
+
+  <!-- Error Message -->
+  <div *ngIf="flagError" class="ion-text-center sinResultados--centrar ion-padding">
+    <img src="assets/icon/noFoods.svg" class="error__icon" alt="Icono de comidas">
+    <ion-title class="titulo__error">Sin resultados...</ion-title>
+    <p class="texto__error">Intente buscar una palabra clave diferente o ajuste un poco su búsqueda.</p>
+  </div>
+</ion-content>
+
+<!-- Tab Bar -->
+<div class="tab-bar">
+  <app-app-tabs></app-app-tabs>
+</div>

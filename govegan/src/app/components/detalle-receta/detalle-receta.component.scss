@@ -1,0 +1,268 @@
+.titulo {
+  margin-right: 14vw;
+  font-size: 4vw;
+  font-weight: 600;
+  --color: #272727;
+}
+
+.contenido {
+  padding: 16px;
+  background-color: #f7fcf7;
+  border-radius: 8px;
+}
+
+.contenido__titulo {
+  font-size: 5vw;
+  --color: #272727;
+  margin-bottom: 16px;
+}
+
+.contenido__receta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contenido__imagen img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid #91C788;
+  margin-bottom: 8px;
+}
+
+.contenido__rating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 8px 0;
+}
+
+.contenido__rating--margin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 15px;
+}
+
+.contenido__estrellas {
+  display: flex;
+  justify-content: center;
+}
+
+.star-icon {
+  color: #f3d10f;
+  font-size: 24px;
+  margin: 0 2px;
+}
+
+.stars-number {
+  margin-left: 5px;
+  font-size: 22.5px;
+}
+
+.stars-number-length {
+  margin-right: 5px;
+  font-size: 22.5px;
+  color: rgb(165, 165, 165);
+}
+
+.rate-button {
+  --background: #f58b7e;
+  --color: #fff;
+  font-size: 14px;
+  margin-top: 16px;
+  border-radius: 20px;
+  text-transform: capitalize;
+}
+
+.comments-button {
+  --background: #91C788;
+  --color: #fff;
+  font-size: 14px;
+  margin-top: 16px;
+  border-radius: 20px;
+  text-transform: capitalize;
+}
+
+.contenido__detalles {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.icon {
+  font-size: 32px;
+  color: #91C788;
+  margin-right: 8px;
+  margin-bottom: -20px;
+}
+
+.contenido__valores-nutricionales,
+.contenido__informacion-adicional,
+.contenido__tips,
+.contenido__rendimiento-por-edad {
+  margin-top: 16px;
+  text-align: center;
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.contenido__valores-nutricionales p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.contenido__informacion-adicional p,
+.contenido__tips p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.contenido__ingredientes,
+.contenido__preparacion {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.contenido__ingredientes ul,
+.contenido__preparacion ol {
+  padding-left: 30px;
+  padding-right: 20px;
+  padding-bottom: 15px;
+  text-align: left;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contenido__ingredientes h2,
+.contenido__preparacion h2,
+.contenido__tips h2,
+.contenido__rendimiento-por-edad h2,
+.contenido__informacion-adicional h2,
+.contenido__valores-nutricionales h2 {
+  font-size: 1.2em;
+  padding-bottom: 8px;
+  color: #91C788;
+}
+
+.contenido__ingredientes ul li,
+.contenido__preparacion ol li {
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.contenido__rendimiento-por-edad ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.contenido__rendimiento-por-edad ul li {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.comentarios {
+  margin-top: 20px;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+}
+
+.comentarios ion-item {
+  --background: #ffffff;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.comentarios ion-label h2 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #272727;
+}
+
+.comentarios ion-label p {
+  font-size: 14px;
+  color: #737373;
+}
+
+.comment-date {
+  font-size: 12px;
+  color: #a1a1a1;
+}
+
+ion-infinite-scroll {
+  --color: #91C788;
+}
+
+.ver-mas-button {
+  padding-left: 205px;
+  margin-bottom: -20px;
+  color: #f58b7e;
+}
+
+.ocultar {
+  display: none;
+}
+
+.icono-basurero {
+  font-size: 20px;
+  color: red;
+}
+
+.rate-button,
+.comments-button {
+  margin: 10px 0;
+}
+
+
+.add-comment-button {
+  --background: #f58b7e;
+  --color: #fff;
+  font-size: 14px;
+  margin-top: 16px;
+  border-radius: 20px;
+  text-transform: capitalize;
+}
+
+.boton-esquina {
+  position: absolute;
+  left: 82%;
+  margin-top: -8px;
+}
+
+
+.sinComentarios--centrar {
+  top: 20%;
+  text-align: center;
+}
+
+.titulo__error {
+  font-size: 24px;
+  color: #696969;
+  margin-top: 3px;
+}
+
+.texto__error {
+  font-size: 18px;
+  color: #A9A9A9;
+  margin-top: 3px;
+}
+
+.error__icon {
+  width: 230px;
+  height: 230px;
+  padding-bottom: 5px;
+  margin-top: 20px;
+}
+
+
+

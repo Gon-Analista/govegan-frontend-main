@@ -1,0 +1,38 @@
+.carta__contenido {
+  padding: 1vw;
+  border-top: 0.1px solid #3131311f;
+}
+
+.carta__titulo {
+  font-size: 15.5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+p {
+  font-size: 14px;
+}
+
+.carta__titulo--padding {
+  padding-right: 2vw; 
+}
+
+.carta__imagen {
+  border-top-left-radius: 1vw;
+  border-top-right-radius: 1vw;
+  max-height: 40vw;
+  object-fit: cover;
+  border: none;
+}
+
+.spinner {  
+  height: 159px;
+  width: 346px;
+  color: #f89184;
+}
+
+.special-needs {
+  margin-right: 5px; 
+}
+
